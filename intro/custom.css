@@ -1,0 +1,11 @@
+/* New background colours */
+
+.bg-darkblue {
+  background-color: #123456;
+}
+
+@media screen and (max-width: 767px) {
+  .display-1 {
+    font-size: 60px;
+  }
+}
