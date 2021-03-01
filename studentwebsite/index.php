@@ -9,4 +9,6 @@ if (isset($_GET['page'])) {
 } else {
   include("home.php");
 }
+
+phpinfo();
  ?>
