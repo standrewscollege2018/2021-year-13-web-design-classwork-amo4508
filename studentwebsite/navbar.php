@@ -20,3 +20,9 @@ $tutor_aa = mysqli_fetch_assoc($tutor_qry);
    <input required type="text" name="search" placeholder="Student name">
    <button type="submit" name="button">Search</button>
  </form>
+
+ <a href="index.php?page=addtutor">Link to add tutor</a>
+ <br>
+ <a href="index.php?page=deletestudentselect">Delete students</a>
+<br>
+<a href="index.php?page=editstudentselect">Edit student</a>
