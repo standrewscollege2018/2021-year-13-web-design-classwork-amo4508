@@ -1,15 +1,16 @@
 <?php
 
 $firstname = $_GET['firstname'];
-$lastname = $GET['lastname'];
+$lastname = $_GET['lastname'];
 $photo = $_GET['photo'];
 $studentID = $_GET['studentID'];
 echo "<div class='row'>";
-echo $fistname;
+echo $firstname;
 echo $lastname;
+echo "<br>";
+
 echo "<img src='images/$photo'>";
 echo "</div>";
-
 echo "Are you sure you want to delete it?";
 echo "<a href='index.php?page=deletestudent&studentID=$studentID'>";
 echo "<br>";

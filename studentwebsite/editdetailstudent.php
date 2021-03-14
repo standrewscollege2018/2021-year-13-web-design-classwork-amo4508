@@ -11,20 +11,20 @@ $lastname = $student_aa['lastname'];
 $photo = $student_aa['photo'];
 $tutorID = $student_aa['tutorgroupID'];
 
-echo "<form action='index.php?page=editstudent' method='post' enctype='multipart/form-data'>";
+echo "<form action='index.php?page=editstudent&studentID=$studentID' method='post' enctype='multipart/form-data'>";
 
 echo "<div class='form-group'>";
-echo "<label for='name'>First name</label>";
+echo "<label for='firstname'>First name</label>";
 echo "<input type='text' name='firstname' class='form-control' value='$firstname'>";
 echo "</div>";
 
 echo "<div class='form-group'>";
-echo "<label for='name'>Last name</label>";
+echo "<label for='lastname'>Last name</label>";
 echo "<input type='text' name='lastname' class='form-control' value='$lastname'>";
 echo "</div>";
 
 echo "<div class='form-group'>";
-echo "<label for='code'>Tutor code</label>";
+echo "<label for='tutorcode'>Tutor code</label>";
 $tutor_sql = "SELECT * FROM tutorgroup";
 $tutor_qry = mysqli_query($dbconnect, $tutor_sql);
 $tutor_aa = mysqli_fetch_assoc($tutor_qry);

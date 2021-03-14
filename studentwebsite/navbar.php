@@ -21,8 +21,18 @@ $tutor_aa = mysqli_fetch_assoc($tutor_qry);
    <button type="submit" name="button">Search</button>
  </form>
 
- <a href="index.php?page=addtutor">Link to add tutor</a>
- <br>
- <a href="index.php?page=deletestudentselect">Delete students</a>
-<br>
-<a href="index.php?page=editstudentselect">Edit student</a>
+<?php
+session_start();
+if(!isset($_SESSION['admin'])) {
+  echo "<a href='index.php?page=login'>Login</a>";
+
+} else {
+  echo "<a href='index.php?page=admin'>Admin</a>";
+
+
+}
+
+
+
+
+ ?>
