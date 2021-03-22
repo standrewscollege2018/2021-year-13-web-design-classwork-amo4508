@@ -21,4 +21,6 @@ header("Location: index.php");
 
 <p><a href="index.php?page=editstudentselect">Edit student</a></p>
 
+<p><a href="index.php?page=allocatesubjectselect">Allocate subject</a></p>
+
 <p><a href="logout.php">Logout</a></p>

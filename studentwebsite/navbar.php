@@ -1,4 +1,8 @@
+
+
+
 <?php
+
 
 $tutor_sql = "SELECT * FROM tutorgroup";
 $tutor_qry = mysqli_query($dbconnect, $tutor_sql);
@@ -11,48 +15,76 @@ $subject_aa = mysqli_fetch_assoc($subject_qry);
 
 
  ?>
- <a href="index.php"><h1>St Andrew's College</h1></a>
- <h2>Tutor groups</h2>
- <?php
-   do {
-     $tutorgroupID = $tutor_aa['tutorgroupID'];
-     $tutorcode = $tutor_aa['tutorcode'];
 
-     echo "<a href='index.php?page=tutorgroup&tutorgroupID=$tutorgroupID&tutorcode=$tutorcode'>$tutorcode</a>";
-     echo "<br>";
+ <nav class="navbar navbar-expand-lg navbar-light bg-light">
+   <a class="navbar-brand" href="index.php">St Andrew's College</a>
+   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+     <span class="navbar-toggler-icon"></span>
+   </button>
 
-   } while ($tutor_aa = mysqli_fetch_assoc($tutor_qry));
-echo "<br>";
-    do {
-      $subjectID = $subject_aa['subjectID'];
-      $name = $subject_aa['name'];
+   <div class="collapse navbar-collapse" id="navbarSupportedContent">
+     <ul class="navbar-nav mr-auto">
+       <li class="nav-item">
 
-      echo "<a href='index.php?page=subject&subjectID=$subjectID'>$name</a>";
-      echo "<br>";
+         <?php
+         session_start();
+         if(!isset($_SESSION['admin'])) {
+           echo "<a class='nav-link' href='index.php?page=login'>Login</a>";
 
-    } while ($subject_aa = mysqli_fetch_assoc($subject_qry));
-
-    echo "<br>";
-
- ?>
- <h2>Search for student</h2>
- <form class="" action="index.php?page=searchresults" method="post">
-   <input required type="text" name="search" placeholder="Student name">
-   <button type="submit" name="button">Search</button>
- </form>
-
-<?php
-session_start();
-if(!isset($_SESSION['admin'])) {
-  echo "<a href='index.php?page=login'>Login</a>";
-
-} else {
-  echo "<a href='index.php?page=admin'>Admin</a>";
+         } else {
+           echo "<a class='nav-link' href='index.php?page=admin'>Admin</a>";
 
 
-}
+         }
+?>
+       </li>
+       <li class="nav-item dropdown">
+         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+           Tutor groups
+         </a>
+         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+           <?php
+             do {
+               $tutorgroupID = $tutor_aa['tutorgroupID'];
+               $tutorcode = $tutor_aa['tutorcode'];
+
+               echo "<a class='dropdown-item' href='index.php?page=tutorgroup&tutorgroupID=$tutorgroupID&tutorcode=$tutorcode'>$tutorcode</a>";
+
+             } while ($tutor_aa = mysqli_fetch_assoc($tutor_qry));
+             ?>
+
+         </div>
+       </li>
+
+       <li class="nav-item dropdown">
+         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+           Subjects
+         </a>
+         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+           <?php
+              do {
+                $subjectID = $subject_aa['subjectID'];
+                $name = $subject_aa['name'];
+
+                echo "<a class='dropdown-item' href='index.php?page=subject&subjectID=$subjectID'>$name</a>";
+
+              } while ($subject_aa = mysqli_fetch_assoc($subject_qry));
+
+
+        ?>
+         </div>
+       </li>
+
+     </ul>
+     <form class="form-inline my-2 my-lg-0" action="index.php?page=searchresults" method="post">
+       <input class="form-control mr-sm-2" type="search" placeholder="Student name" aria-label="Search">
+       <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+     </form>
+   </div>
+ </nav>
 
 
 
-
- ?>
+ <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
